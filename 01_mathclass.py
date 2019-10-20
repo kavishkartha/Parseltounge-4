@@ -15,16 +15,16 @@ else:
     median = userList[userListLen//2]
 print("Median: " + str(median))
 
-def mostFrequent(list):
-    counter = 0
-    num = list[0]
+from collections import Counter
 
-    for i in list:
-        currentFrequency = list.count(i)
-        if(currentFrequency > counter):
-            counter = currentFrequency
-            num = i
-print("Mode: " + str( mostFrequent(userList)))
+data = Counter(userList)
+getMode = dict(data)
+mode = [k for k, v in getMode.items() if v == max(list(data.values()))]
+if len(getMode) == userListLen:
+    getMode = "None"
+else:
+    getMode = "Mode: " + ", ".join(map(str, mode))
+print(getMode)
 
 range1 = min(userList)
 range2 = max(userList)
